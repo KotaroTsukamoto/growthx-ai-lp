@@ -11,7 +11,7 @@
 <meta property="og:image" content="assets/ogp.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,9 +19,8 @@
 <!-- ============ HEADER ============ -->
 <header class="header">
   <div class="wrap">
-    <a class="logo" href="#top">
-      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><g fill="#FFD300"><circle cx="50" cy="14" r="14"/><circle cx="81" cy="32" r="14"/><circle cx="81" cy="68" r="14"/><circle cx="50" cy="86" r="14"/><circle cx="19" cy="68" r="14"/><circle cx="19" cy="32" r="14"/></g><circle cx="50" cy="50" r="22" fill="#fff"/><polygon points="50,34 64,42 64,58 50,66 36,58 36,42" fill="#FFD300"/><circle cx="50" cy="50" r="11" fill="#fff"/></svg>
-      Growth X
+    <a class="logo" href="#top" aria-label="Growth X">
+      <img class="logo-img" src="assets/logo-growthx.svg" alt="Growth X" width="385" height="83">
     </a>
     <nav class="nav">
       <a href="#problem">課題</a>
@@ -39,6 +38,9 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="wrap">
+    <span class="flower deco-flower flower-spin" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><g><circle cx="50" cy="14" r="13" fill="#FFD300"/><circle cx="81" cy="32" r="13" fill="#FFCA00"/><circle cx="81" cy="68" r="13" fill="#FFBD00"/><circle cx="50" cy="86" r="13" fill="#FFD300"/><circle cx="19" cy="68" r="13" fill="#FFCA00"/><circle cx="19" cy="32" r="13" fill="#FFBD00"/></g><circle cx="50" cy="50" r="20" fill="#FDF6DD"/><polygon points="50,35 63,42.5 63,57.5 50,65 37,57.5 37,42.5" fill="#FFD300"/><circle cx="50" cy="50" r="9" fill="#FDF6DD"/></svg>
+    </span>
     <div class="hero-copy">
       <span class="badge">★ 1コース 無料トライアル受付中</span>
       <h1>ビジネスを伸ばせる<br><span class="mark">AI力</span>を、<br>チームで身につける。</h1>
@@ -77,8 +79,11 @@
       <div class="stat"><div class="n">2,000<small>名</small></div><div class="l">1社あたり最大導入</div></div>
       <div class="stat"><div class="n">ISO<small> 27001</small></div><div class="l">情報セキュリティ認証</div></div>
     </div>
-    <div class="logos">
-      <span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span><span>ほか600社以上</span>
+    <div class="marquee">
+      <div class="marquee_track">
+        <span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span>
+        <span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span>
+      </div>
     </div>
   </div>
 </section>
@@ -113,6 +118,8 @@
     </div>
   </div>
 </section>
+
+<div class="arrow-down"><i></i></div>
 
 <!-- ============ PROBLEM ============ -->
 <section class="section section--gray" id="problem">
@@ -157,6 +164,8 @@
     </div>
   </div>
 </section>
+
+<div class="arrow-down"><i></i></div>
 
 <!-- ============ EXPERIENCE ============ -->
 <section class="section section--tint">
@@ -345,30 +354,34 @@
   <div class="wrap center">
     <span class="eyebrow">お申し込み</span>
     <h2 class="h2">まずは、<span class="mark">無料説明会から。</span></h2>
-    <p class="lead center">1時間程度のオンライン。サービス概要と、貴社に合った進め方をご説明します。無理な勧誘はありません。</p>
+    <p class="lead center">入力は30秒。送信後、担当より説明会（オンライン1時間程度）の日程をご案内します。サービス概要と貴社に合った進め方をご説明します。無理な勧誘はありません。</p>
   </div>
   <div class="wrap">
     <!-- NOTE: action は叩き台のダミー。本番は Formspree / HubSpot / 自社API に差し替え -->
     <form class="form-wrap" action="https://formspree.io/f/REPLACE_ME" method="POST">
+      <span class="form-step">STEP 1／2　お申し込み（30秒）</span>
       <div class="field-row">
         <div class="field"><label>会社名<span class="req">必須</span></label><input type="text" name="company" required placeholder="株式会社○○"></div>
         <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" name="name" required placeholder="山田 太郎"></div>
       </div>
-      <div class="field-row">
-        <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" name="email" required placeholder="taro@example.com"></div>
-        <div class="field"><label>電話番号<span style="color:#999;font-size:11px;margin-left:4px;">任意</span></label><input type="tel" name="tel" placeholder="03-1234-5678"></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>想定参加人数</label>
-          <select name="headcount"><option>4〜10名</option><option>11〜15名</option><option>16名以上</option><option>未定</option></select>
+      <div class="field"><label>会社メールアドレス<span class="req">必須</span></label><input type="email" name="email" required placeholder="taro@example.com"></div>
+
+      <details class="form-details">
+        <summary>詳細を伝える（任意・あると日程提案がスムーズです）</summary>
+        <div class="field"><label>電話番号</label><input type="tel" name="tel" placeholder="03-1234-5678"></div>
+        <div class="field-row">
+          <div class="field"><label>想定参加人数</label>
+            <select name="headcount"><option value="">選択しない</option><option>4〜10名</option><option>11〜15名</option><option>16名以上</option><option>未定</option></select>
+          </div>
+          <div class="field"><label>興味のあるコース</label>
+            <select name="course"><option value="">選択しない</option><option>AIスキル編</option><option>BtoCマーケティング編</option><option>BtoB＆セールス編</option><option>ビジネスOS編</option><option>未定 / 相談したい</option></select>
+          </div>
         </div>
-        <div class="field"><label>興味のあるコース</label>
-          <select name="course"><option>AIスキル編</option><option>BtoCマーケティング編</option><option>BtoB＆セールス編</option><option>ビジネスOS編</option><option>未定 / 相談したい</option></select>
-        </div>
-      </div>
-      <div class="field"><label>ご質問・備考<span style="color:#999;font-size:11px;margin-left:4px;">任意</span></label><textarea name="message" rows="3" placeholder="現状の課題やご希望があればご記入ください"></textarea></div>
+        <div class="field"><label>ご質問・備考</label><textarea name="message" rows="3" placeholder="現状の課題やご希望があればご記入ください"></textarea></div>
+      </details>
+
       <button type="submit" class="btn btn--primary btn--lg">無料説明会を予約する</button>
-      <p class="form-note">送信いただいた内容は、ご連絡以外の目的には使用しません。｜ <a href="https://grtx.jp/" style="color:var(--blue)">プライバシーポリシー</a></p>
+      <p class="form-note">送信後、担当より日程候補をご連絡します。内容はご連絡以外の目的には使用しません。｜ <a href="https://grtx.jp/" style="color:var(--blue)">プライバシーポリシー</a></p>
     </form>
   </div>
 </section>
@@ -376,17 +389,31 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="wrap">
-    <a class="logo" href="#top">
-      <svg class="mark" width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><g fill="#FFD300"><circle cx="50" cy="14" r="14"/><circle cx="81" cy="32" r="14"/><circle cx="81" cy="68" r="14"/><circle cx="50" cy="86" r="14"/><circle cx="19" cy="68" r="14"/><circle cx="19" cy="32" r="14"/></g><circle cx="50" cy="50" r="22" fill="#111"/><polygon points="50,34 64,42 64,58 50,66 36,58 36,42" fill="#FFD300"/><circle cx="50" cy="50" r="11" fill="#111"/></svg>
-      Growth X
+    <a class="logo" href="#top" aria-label="Growth X">
+      <img class="logo-img" src="assets/logo-growthx.svg" alt="Growth X" width="385" height="83" style="filter:brightness(0) invert(1);">
     </a>
     <div>株式会社グロースＸ ｜ 東京都港区元赤坂1-7-18 元赤坂イースト301 ｜ <a href="https://grtx.jp/" style="color:#ccc;">grtx.jp</a></div>
     <div>© 2026 GrowthX Inc.</div>
   </div>
 </footer>
 
-<!-- mobile sticky cta -->
-<div class="sticky-cta"><a class="btn btn--primary" href="#cta">無料説明会を予約する</a></div>
+<!-- 固定CTA（スクロールで出現 / desktop=右下フロート, mobile=下部バー） -->
+<div class="fixed-cta" id="fixedCta"><a class="btn btn--primary" href="#cta">無料説明会を予約する</a></div>
+
+<script>
+(function(){
+  var cta = document.getElementById('fixedCta');
+  var hero = document.getElementById('top');
+  document.body.classList.add('has-fixed-cta');
+  // ヒーローを抜けたら表示（IntersectionObserver＝スクロールごとの再計算なしで軽量）
+  if ('IntersectionObserver' in window && hero) {
+    var io = new IntersectionObserver(function(es){
+      cta.classList.toggle('is-visible', !es[0].isIntersecting);
+    }, { rootMargin: '-200px 0px 0px 0px' });
+    io.observe(hero);
+  } else { cta.classList.add('is-visible'); }
+})();
+</script>
 
 </body>
 </html>

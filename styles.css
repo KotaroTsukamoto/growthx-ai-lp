@@ -17,7 +17,9 @@
   --shadow: 0 10px 40px rgba(0,0,0,.08);
   --maxw: 1120px;
   --font: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-en: "Lato", "Noto Sans JP", sans-serif;
 }
+.en { font-family: var(--font-en); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -91,7 +93,7 @@ a { color: inherit; text-decoration: none; }
 .menu-toggle { display: none; }
 
 /* ---------- Hero ---------- */
-.hero { background: var(--yellow-tint); overflow: hidden; }
+.hero { background: var(--yellow-tint); overflow: hidden; position: relative; }
 .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
 .hero .badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -104,7 +106,7 @@ a { color: inherit; text-decoration: none; }
 .hero .micro { font-size: 13px; color: var(--ink-2); margin-bottom: 26px; }
 .hero .micro b { color: var(--blue); }
 .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero-visual { position: relative; }
+.hero-visual { position: relative; z-index: 1; }
 .phone {
   width: 290px; margin: 0 auto; background: var(--ink); border-radius: 38px; padding: 12px;
   box-shadow: var(--shadow); position: relative;
@@ -283,6 +285,59 @@ a { color: inherit; text-decoration: none; }
 /* floating mobile cta */
 .sticky-cta { display:none; }
 
+/* ===================================================
+   lp011 寄せ 最適化レイヤー (v0.2)
+   =================================================== */
+
+/* 回るブランド花マーク（performance: transform only / reduced-motion 配慮） */
+.flower { display:inline-block; line-height:0; }
+.flower svg { display:block; }
+.flower-spin { animation: gx-spin 16s linear infinite; transform-origin:50% 50%; will-change: transform; }
+@keyframes gx-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .flower-spin { animation: none; } }
+
+/* ヘッダー公式ロゴ画像 */
+.logo img.logo-img { height: 30px; width:auto; display:block; }
+.footer .logo img.logo-img { height: 26px; }
+
+/* 数字・英字は Lato で grtx の打感に */
+.trust .stat .n, .hero .float .num, .price-from strong, .offer-price .big,
+.hero .badge, .eyebrow { font-family: var(--font-en); }
+.trust .stat .n { letter-spacing:.01em; }
+
+/* ヒーロー: c-hero 風の大見出し */
+.hero h1 { font-size: clamp(32px, 5.4vw, 56px); line-height: 1.28; }
+.hero-copy { position: relative; z-index: 2; }
+.hero .deco-flower { position:absolute; right:5%; top:96px; width:112px; opacity:.85; z-index:0; pointer-events:none; }
+
+/* セクション間 ▼ 矢印（grtx の section-arrow 風） */
+.arrow-down { text-align:center; line-height:0; padding: 30px 0; }
+.arrow-down i { display:inline-block; width:24px; height:24px; border-right:5px solid var(--yellow); border-bottom:5px solid var(--yellow); transform: rotate(45deg); }
+.section--tint + .arrow-down, .arrow-down.on-tint { background: var(--yellow-tint); }
+.section--gray + .arrow-down, .arrow-down.on-gray { background: var(--gray-bg); }
+
+/* 会社ロゴ 自動スクロール marquee */
+.marquee { overflow: hidden; margin-top: 30px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee_track { display:flex; gap:12px; width:max-content; animation: gx-marquee 38s linear infinite; }
+.marquee:hover .marquee_track { animation-play-state: paused; }
+.marquee span { white-space:nowrap; font-size:12px; font-weight:700; color:#bdbdbd; background:rgba(255,255,255,.06); padding:8px 16px; border-radius:8px; }
+@keyframes gx-marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee_track { animation:none; flex-wrap:wrap; width:auto; } }
+
+/* 固定CTAボタン（desktop=右下フロート / mobile=下部バー）lp011準拠の黄 */
+.fixed-cta { position: fixed; right: 24px; bottom: 24px; z-index: 60; opacity:0; visibility:hidden; transform: translateY(12px); transition: opacity .3s, transform .3s, visibility .3s; }
+.fixed-cta.is-visible { opacity:1; visibility:visible; transform: translateY(0); }
+.fixed-cta .btn { box-shadow: 0 10px 30px rgba(0,0,0,.22); }
+
+/* 軽量フォーム: 任意項目を折りたたみ */
+.form-details { margin: 6px 0 16px; border:1px solid var(--line); border-radius:10px; padding: 0 14px; background:#fafafa; }
+.form-details > summary { cursor:pointer; font-size:13px; font-weight:700; color:var(--blue); padding:12px 0; list-style:none; }
+.form-details > summary::-webkit-details-marker { display:none; }
+.form-details > summary::before { content:"＋ "; font-weight:900; }
+.form-details[open] > summary::before { content:"− "; }
+.form-details .field:last-child { margin-bottom: 16px; }
+.form-step { display:inline-flex; gap:6px; align-items:center; font-size:13px; font-weight:700; color:var(--blue); background:#E8F1F8; padding:6px 14px; border-radius:999px; margin-bottom:14px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .section { padding: 60px 0; }
@@ -296,10 +351,9 @@ a { color: inherit; text-decoration: none; }
   .course-grid { grid-template-columns: 1fr 1fr; }
   .header .btn { display:none; }
   .menu-toggle { display:block; background:none; border:none; font-size:24px; }
-  .sticky-cta {
-    display:flex; position: fixed; bottom: 0; left:0; right:0; z-index: 60;
-    background:#fff; border-top:1px solid var(--line); padding: 10px 16px; box-shadow: 0 -6px 20px rgba(0,0,0,.08);
-  }
-  .sticky-cta .btn { width:100%; }
-  body { padding-bottom: 76px; }
+  .hero .deco-flower { display: none; }
+  .fixed-cta { right:0; left:0; bottom:0; padding:10px 16px; background:#fff; border-top:1px solid var(--line); box-shadow:0 -6px 20px rgba(0,0,0,.1); transform: translateY(100%); }
+  .fixed-cta.is-visible { transform: translateY(0); }
+  .fixed-cta .btn { width:100%; }
+  body.has-fixed-cta { padding-bottom: 76px; }
 }
