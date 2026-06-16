@@ -330,8 +330,12 @@ a { color: inherit; text-decoration: none; }
 .logo-strip { background:#fff; padding: 32px 0 36px; }
 .logo-strip__cap { text-align:center; font-size:12px; font-weight:700; color:#9aa0a6; letter-spacing:.1em; margin-bottom:20px; }
 .logo-strip .marquee { margin-top:0; }
-.logo-strip .marquee_track { gap: 48px; align-items:center; }
-.logo-strip .marquee img { height: 36px; width:auto; max-width:160px; object-fit:contain; display:block; }
+.logo-strip .marquee_track { gap: 44px; align-items: stretch; }
+/* lp011準拠: 各カラムが縦2段(一部1段)、横に無限スクロール */
+.logo-col { display:flex; flex-direction:column; justify-content:space-between; align-items:center; height: 100px; gap:18px; flex:0 0 auto; }
+.logo-col.one { justify-content:center; }
+.logo-col img { height: 30px; width:auto; max-width:150px; object-fit:contain; display:block; }
+@media (max-width: 760px){ .logo-col { height: 72px; gap:12px; } .logo-col img { height: 24px; max-width:110px; } }
 
 /* 固定CTAボタン（desktop=右下フロート / mobile=下部バー）lp011準拠の黄 */
 .fixed-cta { position: fixed; right: 24px; bottom: 24px; z-index: 60; opacity:0; visibility:hidden; transform: translateY(12px); transition: opacity .3s, transform .3s, visibility .3s; }
