@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>実績バー デザイン比較（叩き台・本件後削除）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{ --yellow:#FFD300; --ink:#1A1A1A; --blue:#00649D; --tint:#FDF6DD; --gray:#F6F7F9; --line:#E7E8EB; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Noto Sans JP",sans-serif;background:#eceef1;color:var(--ink);}
+.en{font-family:"Lato","Noto Sans JP",sans-serif;}
+.page{max-width:1180px;margin:0 auto;padding:36px 20px 80px;}
+.page > h1{font-size:22px;font-weight:900;margin-bottom:4px;}
+.page > p.note{font-size:13px;color:#777;margin-bottom:30px;}
+.case{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:26px;box-shadow:0 6px 24px rgba(0,0,0,.05);}
+.case > .cap{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);font-size:14px;font-weight:800;}
+.case > .cap .tag{font-family:"Lato";font-size:12px;font-weight:900;color:#fff;background:var(--ink);width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
+.case > .cap .desc{font-weight:600;color:#888;font-size:12px;}
+.logos-data{display:none;}
+
+/* 共通 stat 構造の最小化 */
+.bar{padding:46px 40px;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat .n{font-family:"Lato","Noto Sans JP",sans-serif;font-weight:900;line-height:1;}
+.stat .n small{font-family:"Noto Sans JP";font-weight:800;}
+.logos{display:flex;flex-wrap:wrap;}
+
+/* ============ A: ライト・カード ============ */
+.vA{background:var(--gray);}
+.vA .stats{gap:16px;}
+.vA .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 18px;text-align:center;position:relative;overflow:hidden;}
+.vA .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--yellow);}
+.vA .stat .n{font-size:40px;color:var(--ink);}
+.vA .stat .n small{font-size:15px;color:var(--ink);margin-left:2px;}
+.vA .stat .l{margin-top:8px;font-size:13px;color:#888;font-weight:700;}
+.vA .logos{gap:10px;justify-content:center;margin-top:26px;}
+.vA .logos span{font-size:12px;font-weight:700;color:#9aa0a6;background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:8px;}
+
+/* ============ B: イエロー帯 ============ */
+.vB{background:var(--yellow);}
+.vB .stats{gap:10px;}
+.vB .stat{text-align:center;position:relative;}
+.vB .stat:not(:last-child)::after{content:"";position:absolute;right:0;top:14%;height:72%;width:2px;background:rgba(0,0,0,.16);}
+.vB .stat .n{font-size:46px;color:var(--ink);}
+.vB .stat .n small{font-size:16px;}
+.vB .stat .l{margin-top:6px;font-size:13px;color:#6b5900;font-weight:800;}
+.vB .logos{gap:8px 18px;justify-content:center;margin-top:30px;}
+.vB .logos span{font-size:13px;font-weight:800;color:rgba(0,0,0,.62);}
+
+/* ============ C: ダーク洗練・区切り線 ============ */
+.vC{background:var(--ink);color:#fff;}
+.vC .stats{gap:0;}
+.vC .stat{text-align:center;padding:0 10px;position:relative;}
+.vC .stat:not(:last-child)::after{content:"";position:absolute;right:0;top:10%;height:80%;width:1px;background:rgba(255,255,255,.14);}
+.vC .stat .n{font-size:44px;color:var(--yellow);letter-spacing:.01em;}
+.vC .stat .n small{font-size:15px;color:#fff;font-weight:700;margin-left:3px;}
+.vC .stat .l{margin-top:8px;font-size:12px;color:#9a9a9a;font-weight:600;letter-spacing:.04em;}
+.vC .logos{gap:0;justify-content:center;align-items:center;margin-top:34px;flex-wrap:wrap;}
+.vC .logos span{font-size:13px;font-weight:700;color:#fff;opacity:.45;padding:6px 18px;position:relative;transition:opacity .2s;}
+.vC .logos span:not(:last-child)::after{content:"";position:absolute;right:0;top:25%;height:50%;width:1px;background:rgba(255,255,255,.16);}
+.vC .logos span:hover{opacity:.95;}
+
+/* ============ D: 白ミニマル・罫線 ============ */
+.vD{background:#fff;}
+.vD .stats{gap:0;}
+.vD .stat{text-align:center;padding:6px 14px;position:relative;}
+.vD .stat:not(:last-child)::after{content:"";position:absolute;right:0;top:8%;height:84%;width:1px;background:var(--line);}
+.vD .stat .n{font-size:42px;color:var(--ink);display:inline-block;padding-bottom:8px;border-bottom:4px solid var(--yellow);}
+.vD .stat .n small{font-size:15px;color:var(--ink);font-weight:800;}
+.vD .stat .l{margin-top:12px;font-size:12px;color:#999;font-weight:700;letter-spacing:.06em;}
+.vD .logos{gap:0;justify-content:center;align-items:center;margin-top:34px;flex-wrap:wrap;}
+.vD .logos span{font-size:12.5px;font-weight:700;color:#b3b8be;padding:5px 16px;}
+.vD .logos span:not(:last-child){border-right:1px solid var(--line);}
+
+@media(max-width:760px){
+  .bar{padding:30px 18px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:18px;}
+  .vC .stat:nth-child(2)::after,.vD .stat:nth-child(2)::after,.vB .stat:nth-child(2)::after{display:none;}
+  .stat .n{font-size:34px !important;}
+}
+</style></head>
+<body>
+<div class="page">
+  <h1>実績バー デザイン比較 — 4パターン</h1>
+  <p class="note">叩き台 / 本件終了後に <code>lab/</code> ごと削除予定。内容は同じ、見せ方だけ4種。気に入った番号を教えてください。</p>
+
+  <!-- A -->
+  <div class="case"><div class="cap"><span class="tag">A</span>ライト・カード型 <span class="desc">白基調・各指標をカード化・上に黄アクセント。軽く明るい印象</span></div>
+    <div class="bar vA">
+      <div class="stats">
+        <div class="stat"><div class="n">600<small>社以上</small></div><div class="l">導入社数</div></div>
+        <div class="stat"><div class="n">20,000<small>名以上</small></div><div class="l">育成対象ユーザー</div></div>
+        <div class="stat"><div class="n">2,000<small>名</small></div><div class="l">1社あたり最大導入</div></div>
+        <div class="stat"><div class="n">ISO<small> 27001</small></div><div class="l">情報セキュリティ認証</div></div>
+      </div>
+      <div class="logos"><span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span></div>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="case"><div class="cap"><span class="tag">B</span>イエロー帯型 <span class="desc">ブランド黄ベタ・黒文字・区切り線。力強くブランド主張</span></div>
+    <div class="bar vB">
+      <div class="stats">
+        <div class="stat"><div class="n">600<small>社以上</small></div><div class="l">導入社数</div></div>
+        <div class="stat"><div class="n">20,000<small>名以上</small></div><div class="l">育成対象ユーザー</div></div>
+        <div class="stat"><div class="n">2,000<small>名</small></div><div class="l">1社あたり最大導入</div></div>
+        <div class="stat"><div class="n">ISO<small> 27001</small></div><div class="l">情報セキュリティ認証</div></div>
+      </div>
+      <div class="logos"><span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="case"><div class="cap"><span class="tag">C</span>ダーク洗練・区切り線型 <span class="desc">黒基調を維持しつつ縦罫線＋ロゴをモノトーン化。高級感</span></div>
+    <div class="bar vC">
+      <div class="stats">
+        <div class="stat"><div class="n">600<small>社以上</small></div><div class="l">導入社数</div></div>
+        <div class="stat"><div class="n">20,000<small>名以上</small></div><div class="l">育成対象ユーザー</div></div>
+        <div class="stat"><div class="n">2,000<small>名</small></div><div class="l">1社あたり最大導入</div></div>
+        <div class="stat"><div class="n">ISO<small> 27001</small></div><div class="l">情報セキュリティ認証</div></div>
+      </div>
+      <div class="logos"><span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span></div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="case"><div class="cap"><span class="tag">D</span>白ミニマル・罫線型 <span class="desc">白×数字に黄下線・細罫線。エディトリアルで上品</span></div>
+    <div class="bar vD">
+      <div class="stats">
+        <div class="stat"><div class="n">600<small>社以上</small></div><div class="l">導入社数</div></div>
+        <div class="stat"><div class="n">20,000<small>名以上</small></div><div class="l">育成対象ユーザー</div></div>
+        <div class="stat"><div class="n">2,000<small>名</small></div><div class="l">1社あたり最大導入</div></div>
+        <div class="stat"><div class="n">ISO<small> 27001</small></div><div class="l">情報セキュリティ認証</div></div>
+      </div>
+      <div class="logos"><span>NISSIN</span><span>meiji</span><span>SUNTORY</span><span>ITOCHU</span><span>Oisix</span><span>ブルボン</span><span>Asahi</span><span>LIXIL</span><span>Panasonic</span><span>SUBARU</span><span>docomo</span><span>集英社</span><span>三井住友海上</span><span>りそな銀行</span><span>FANCL</span><span>JR</span></div>
+    </div>
+  </div>
+
+</div>
+</body></html>
