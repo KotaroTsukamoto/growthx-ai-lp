@@ -127,13 +127,16 @@ a { color: inherit; text-decoration: none; }
 .float .num { color: var(--blue); font-size: 18px; font-weight: 900; }
 
 /* ---------- Trust bar ---------- */
-.trust { background: var(--ink); color: #fff; }
-.trust .wrap { padding: 38px 24px; }
-.trust .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; text-align: center; }
-.trust .stat .n { font-size: clamp(28px,4vw,42px); font-weight: 900; color: var(--yellow); line-height: 1.1; }
-.trust .stat .l { font-size: 13px; color: #cfcfcf; margin-top: 4px; }
-.trust .logos { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px 14px; justify-content: center; }
-.trust .logos span { font-size: 12px; font-weight: 700; color: #bdbdbd; background: rgba(255,255,255,.06); padding: 6px 12px; border-radius: 8px; }
+/* 実績バー: Variation A（アイコン・カード型） */
+.trust { background: var(--gray-bg); }
+.trust .wrap { padding: 56px 24px; }
+.trust .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.trust .stat { background:#fff; border:1px solid var(--line); border-radius: 18px; padding: 28px 16px; text-align:center; }
+.trust .stat .badge { display:block; width:92px; height:92px; margin:0 auto 14px; border-radius:50%; background:#fff; border:1px solid var(--line); box-shadow:0 6px 16px rgba(0,0,0,.07); overflow:hidden; }
+.trust .stat .badge img { width:100%; height:100%; object-fit:cover; display:block; }
+.trust .stat .n { font-size: clamp(30px,3.4vw,40px); font-weight: 900; color: var(--ink); line-height: 1.05; }
+.trust .stat .n small { font-size: 14px; font-weight: 800; margin-left: 2px; }
+.trust .stat .l { font-size: 13px; color: #888; font-weight: 700; margin-top: 8px; }
 
 /* ---------- Cards / grids ---------- */
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 44px; }
