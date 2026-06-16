@@ -323,6 +323,12 @@ a { color: inherit; text-decoration: none; }
 .marquee span { white-space:nowrap; font-size:12px; font-weight:700; color:#bdbdbd; background:rgba(255,255,255,.06); padding:8px 16px; border-radius:8px; }
 @keyframes gx-marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee_track { animation:none; flex-wrap:wrap; width:auto; } }
+/* 実ロゴ自動スクロール 白帯 */
+.logo-strip { background:#fff; padding: 32px 0 36px; }
+.logo-strip__cap { text-align:center; font-size:12px; font-weight:700; color:#9aa0a6; letter-spacing:.1em; margin-bottom:20px; }
+.logo-strip .marquee { margin-top:0; }
+.logo-strip .marquee_track { gap: 48px; align-items:center; }
+.logo-strip .marquee img { height: 36px; width:auto; max-width:160px; object-fit:contain; display:block; }
 
 /* 固定CTAボタン（desktop=右下フロート / mobile=下部バー）lp011準拠の黄 */
 .fixed-cta { position: fixed; right: 24px; bottom: 24px; z-index: 60; opacity:0; visibility:hidden; transform: translateY(12px); transition: opacity .3s, transform .3s, visibility .3s; }
