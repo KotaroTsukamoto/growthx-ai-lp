@@ -338,6 +338,19 @@ a { color: inherit; text-decoration: none; }
 .form-details .field:last-child { margin-bottom: 16px; }
 .form-step { display:inline-flex; gap:6px; align-items:center; font-size:13px; font-weight:700; color:var(--blue); background:#E8F1F8; padding:6px 14px; border-radius:999px; margin-bottom:14px; }
 
+/* 代表インタビュー動画ブロック */
+.media-grid { display:grid; grid-template-columns: 1fr 1.12fr; gap: 44px; align-items:center; margin-top: 36px; }
+.media-text .name { display:flex; align-items:center; gap:10px; margin-top:18px; }
+.media-text .name .ph { width:42px; height:42px; border-radius:50%; background:var(--yellow); display:flex; align-items:center; justify-content:center; font-weight:900; color:var(--ink); }
+.media-text .name .meta { font-size:13px; line-height:1.5; }
+.media-text .name .meta b { font-size:15px; }
+.media-text .name .meta span { color:#888; }
+.video-frame { position:relative; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#000; box-shadow: var(--shadow); }
+.video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video-flag { position:absolute; top:12px; left:12px; z-index:2; display:inline-flex; align-items:center; gap:6px;
+  background:rgba(0,0,0,.62); color:#fff; font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; pointer-events:none; }
+.video-flag .dot { width:7px; height:7px; border-radius:50%; background:#ff4d4f; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .section { padding: 60px 0; }
@@ -345,7 +358,7 @@ a { color: inherit; text-decoration: none; }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-visual { order: -1; }
   .grid-3, .grid-2, .grid-4, .dual, .feat, .steps, .price-grid, .company,
-  .course-grid, .os-editions, .cond, .shift { grid-template-columns: 1fr; }
+  .course-grid, .os-editions, .cond, .shift, .media-grid { grid-template-columns: 1fr; }
   .shift-arrow { transform: rotate(90deg); }
   .trust .stats { grid-template-columns: repeat(2,1fr); gap: 24px; }
   .course-grid { grid-template-columns: 1fr 1fr; }

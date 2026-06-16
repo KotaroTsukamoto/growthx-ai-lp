@@ -119,6 +119,31 @@
   </div>
 </section>
 
+<!-- ============ MEDIA / 代表インタビュー動画 ============ -->
+<section class="section" id="interview">
+  <div class="wrap">
+    <div class="media-grid">
+      <div class="media-text">
+        <span class="eyebrow">代表インタビュー</span>
+        <h2 class="h2">AIで、組織は<br><span class="mark">どう変わるのか。</span></h2>
+        <p class="lead">「AIを使う」の先にあるのは、チームで成果を生み出す力。代表・津下本耕太郎が、生成AI時代の人材育成と組織変革のリアルをインタビューでお話ししています。号令で終わらせないための視点を、ぜひご覧ください。</p>
+        <div class="name">
+          <span class="ph">津</span>
+          <span class="meta"><b>津下本 耕太郎</b><br><span>株式会社グロースＸ 代表取締役</span></span>
+        </div>
+      </div>
+      <div class="video-frame">
+        <span class="video-flag"><span class="dot"></span>スクロールで自動再生（音声オフ）</span>
+        <iframe id="repVideo"
+          src="https://www.youtube.com/embed/e3blkHRm0W8?enablejsapi=1&mute=1&playsinline=1&rel=0&controls=1&modestbranding=1"
+          title="代表 津下本 耕太郎 インタビュー"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="arrow-down"><i></i></div>
 
 <!-- ============ PROBLEM ============ -->
@@ -412,6 +437,20 @@
     }, { rootMargin: '-200px 0px 0px 0px' });
     io.observe(hero);
   } else { cta.classList.add('is-visible'); }
+})();
+
+// 代表インタビュー: ビューに入ったら音声オフで自動再生 / 外れたら一時停止
+(function(){
+  var f = document.getElementById('repVideo');
+  if (!f || !('IntersectionObserver' in window)) return;
+  function cmd(func){ try { f.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:[]}), 'https://www.youtube.com'); } catch(e){} }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (e.isIntersecting) { cmd('mute'); cmd('playVideo'); }
+      else { cmd('pauseVideo'); }
+    });
+  }, { threshold: 0.45 });
+  io.observe(f);
 })();
 </script>
 
